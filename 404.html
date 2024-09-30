@@ -5,11 +5,11 @@
 	<title>HomePage</title>
 	<meta charset="UTF-8" />
 	<meta name="format-detection" content="telephone=no" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&_v=20240930163234" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap&_v=20240930163234" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&_v=20240930202541" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap&_v=20240930202541" rel="stylesheet" />
 
-	<link rel="stylesheet" href="css/style.min.css?_v=20240930163234" />
-	<link rel="stylesheet" href="files/output.css?_v=20240930163234" />
+	<link rel="stylesheet" href="css/style.min.css?_v=20240930202541" />
+	<link rel="stylesheet" href="files/output.css?_v=20240930202541" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -162,16 +162,23 @@
 													</div>
 												</div>
 											</div>
-											<div class="bg-black rounded-lg max-w-[358px]">
-												<div class="flex flex-col gap-6 text-sm p-6">
-													<h4>Хто контролює світло? Тільки ти!</h4>
-													<p>
-														Повернись до власного графіка без відключень. Встанови
-														генератор Pramac та будь впевнений, що тільки ти
-														вирішуєш, коли настане темрява.
-													</p>
+											<div data-aos="fade-up" class="control">
+												<div class="control__body">
+													<h3>Хто контролює світло? Тільки ти!</h3>
+													<div class="control__text">
+														<p>
+															Повернись до власного графіка без відключень. Встанови
+															генератор Pramac та будь впевнений, що тільки ти
+															вирішуєш, коли настане темрява.
+														</p>
+													</div>
 												</div>
-												<picture><source srcset="img/decor/01.webp" type="image/webp"><img class="w-full max-h-[180px] object-cover" src="img/decor/01.jpg" alt="Image" /></picture>
+												<div class="control__video">
+													<video class="h-full w-full" autoplay muted loop>
+														<source class="w-full h-full" src="./files/videos/lamp/CTA_Lamp.mp4" type="video/mp4" />
+														<source class="w-full h-full" src="./files/videos/lamp/CTA_Lamp.webm" type="video/webm" />
+													</video>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -400,7 +407,15 @@
 			<section class="404">
 				<div class="main-container flex items-center justify-center">
 					<div class="flex w-fit flex-col items-center text-center max-w-[460px] gap-10 text-white">
-						<h1 class="text-6xl xl:text-[200px] font-bold">404</h1>
+						<div class="relative overflow-hidden">
+							<video class="absolute top-0 left-0 h-full w-full" autoplay muted loop>
+								<source class="w-full h-full" src="./files/videos/404/404_Video.mp4" type="video/mp4" />
+								<source class="w-full h-full" src="./files/videos/404/404_Video.webm" type="video/webm" />
+							</video>
+							<h1 style="mix-blend-mode: multiply" class="relative select-none bg-black text-6xl xl:text-[200px] font-bold">
+								404
+							</h1>
+						</div>
 						<p class="text-2xl text-gray200 font-semibold">
 							Здається, щось пішло не так,але енергія не закінчилась!
 						</p>
@@ -470,7 +485,7 @@
 		</footer>
 
 	</div>
-	<script src="js/app.min.js?_v=20240930163234"></script>
+	<script src="js/app.min.js?_v=20240930202541"></script>
 </body>
 
 </html>

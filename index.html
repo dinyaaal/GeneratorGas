@@ -5,11 +5,11 @@
 	<title>HomePage</title>
 	<meta charset="UTF-8" />
 	<meta name="format-detection" content="telephone=no" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&_v=20240930163234" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap&_v=20240930163234" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&_v=20240930202541" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap&_v=20240930202541" rel="stylesheet" />
 
-	<link rel="stylesheet" href="css/style.min.css?_v=20240930163234" />
-	<link rel="stylesheet" href="files/output.css?_v=20240930163234" />
+	<link rel="stylesheet" href="css/style.min.css?_v=20240930202541" />
+	<link rel="stylesheet" href="files/output.css?_v=20240930202541" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -162,16 +162,23 @@
 													</div>
 												</div>
 											</div>
-											<div class="bg-black rounded-lg max-w-[358px]">
-												<div class="flex flex-col gap-6 text-sm p-6">
-													<h4>Хто контролює світло? Тільки ти!</h4>
-													<p>
-														Повернись до власного графіка без відключень. Встанови
-														генератор Pramac та будь впевнений, що тільки ти
-														вирішуєш, коли настане темрява.
-													</p>
+											<div data-aos="fade-up" class="control">
+												<div class="control__body">
+													<h3>Хто контролює світло? Тільки ти!</h3>
+													<div class="control__text">
+														<p>
+															Повернись до власного графіка без відключень. Встанови
+															генератор Pramac та будь впевнений, що тільки ти
+															вирішуєш, коли настане темрява.
+														</p>
+													</div>
 												</div>
-												<picture><source srcset="img/decor/01.webp" type="image/webp"><img class="w-full max-h-[180px] object-cover" src="img/decor/01.jpg" alt="Image" /></picture>
+												<div class="control__video">
+													<video class="h-full w-full" autoplay muted loop>
+														<source class="w-full h-full" src="./files/videos/lamp/CTA_Lamp.mp4" type="video/mp4" />
+														<source class="w-full h-full" src="./files/videos/lamp/CTA_Lamp.webm" type="video/webm" />
+													</video>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -498,378 +505,388 @@
 						<h1>Категорії товарів</h1>
 					</div>
 					<div class="categories">
-						<div data-aos="zoom-in" class="item-categories xl:col-span-2">
-							<div class="item-categories__content">
-								<div class="category-card">
-									<div class="category-card__image">
-										<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
-									</div>
-
-									<div class="category-card__items">
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-									</div>
-								</div>
-								<div class="tags">
-									<div class="tag-item">
-										<p>VA10000-20000</p>
-									</div>
-									<div class="tag-item">
-										<p>рідкий пропан</p>
-									</div>
-									<div class="tag-item">
-										<p>природний газ</p>
-									</div>
-									<div class="tag-item">
-										<p>50Hz</p>
-									</div>
-								</div>
-							</div>
-							<div class="item-categories__body">
-								<div class="item-categories__body-block">
-									<a class="product-item__link burger-link" href="./category.html">
-										<p><span>6</span> товарів</p>
-										<div class="product-item__link-icon-body">
-											<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+						<div data-aos="zoom-in xl:col-span-2">
+							<div class="item-categories">
+								<div class="item-categories__content">
+									<div class="category-card">
+										<div class="category-card__image">
+											<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
 										</div>
-									</a>
-									<a href="./category.html">
-										<h3>Газові генератори для дому та малого бізнесу</h3>
-									</a>
+
+										<div class="category-card__items">
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="tags">
+										<div class="tag-item">
+											<p>VA10000-20000</p>
+										</div>
+										<div class="tag-item">
+											<p>рідкий пропан</p>
+										</div>
+										<div class="tag-item">
+											<p>природний газ</p>
+										</div>
+										<div class="tag-item">
+											<p>50Hz</p>
+										</div>
+									</div>
 								</div>
-								<div class="item-categories__body-text">
-									<p>
-										Ефективне рішення для багатоквартирних будинків та
-										підприємств, що потребують стабільного енергопостачання.
-									</p>
+								<div class="item-categories__body">
+									<div class="item-categories__body-block">
+										<a class="link-arrow" href="./category.html">
+											<p><span>6</span> товарів</p>
+											<div class="link-arrow-icon-body">
+												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+											</div>
+										</a>
+										<a href="./category.html">
+											<h3>Газові генератори для дому та малого бізнесу</h3>
+										</a>
+									</div>
+									<div class="item-categories__body-text">
+										<p>
+											Ефективне рішення для багатоквартирних будинків та
+											підприємств, що потребують стабільного енергопостачання.
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div data-aos="zoom-in" class="item-categories">
-							<div class="item-categories__content">
-								<div class="category-card">
-									<div class="category-card__image">
-										<picture><source srcset="img/products/02.webp" type="image/webp"><img src="img/products/02.png" alt="Image" /></picture>
-									</div>
-
-									<div class="category-card__items">
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-									</div>
-								</div>
-								<div class="tags">
-									<div class="tag-item">
-										<p>VA10000-20000</p>
-									</div>
-									<div class="tag-item">
-										<p>рідкий пропан</p>
-									</div>
-									<div class="tag-item">
-										<p>природний газ</p>
-									</div>
-									<div class="tag-item">
-										<p>50Hz</p>
-									</div>
-								</div>
-							</div>
-							<div class="item-categories__body">
-								<div class="item-categories__body-block">
-									<a class="product-item__link burger-link" href="./category.html">
-										<p><span>6</span> товарів</p>
-										<div class="product-item__link-icon-body">
-											<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+						<div data-aos="zoom-in">
+							<div class="item-categories">
+								<div class="item-categories__content">
+									<div class="category-card">
+										<div class="category-card__image">
+											<picture><source srcset="img/products/02.webp" type="image/webp"><img src="img/products/02.png" alt="Image" /></picture>
 										</div>
-									</a>
-									<a href="./category.html">
-										<h3>Газові генератори для дому та малого бізнесу</h3>
-									</a>
+
+										<div class="category-card__items">
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="tags">
+										<div class="tag-item">
+											<p>VA10000-20000</p>
+										</div>
+										<div class="tag-item">
+											<p>рідкий пропан</p>
+										</div>
+										<div class="tag-item">
+											<p>природний газ</p>
+										</div>
+										<div class="tag-item">
+											<p>50Hz</p>
+										</div>
+									</div>
 								</div>
-								<div class="item-categories__body-text">
-									<p>
-										Ефективне рішення для багатоквартирних будинків та
-										підприємств, що потребують стабільного енергопостачання.
-									</p>
+								<div class="item-categories__body">
+									<div class="item-categories__body-block">
+										<a class="link-arrow" href="./category.html">
+											<p><span>6</span> товарів</p>
+											<div class="link-arrow-icon-body">
+												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+											</div>
+										</a>
+										<a href="./category.html">
+											<h3>Газові генератори для дому та малого бізнесу</h3>
+										</a>
+									</div>
+									<div class="item-categories__body-text">
+										<p>
+											Ефективне рішення для багатоквартирних будинків та
+											підприємств, що потребують стабільного енергопостачання.
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div data-aos="zoom-in" class="item-categories">
-							<div class="item-categories__content">
-								<div class="category-card">
-									<div class="category-card__image">
-										<picture><source srcset="img/products/03.webp" type="image/webp"><img src="img/products/03.png" alt="Image" /></picture>
-									</div>
-
-									<div class="category-card__items">
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-									</div>
-								</div>
-								<div class="tags">
-									<div class="tag-item">
-										<p>VA10000-20000</p>
-									</div>
-									<div class="tag-item">
-										<p>рідкий пропан</p>
-									</div>
-									<div class="tag-item">
-										<p>природний газ</p>
-									</div>
-									<div class="tag-item">
-										<p>50Hz</p>
-									</div>
-								</div>
-							</div>
-							<div class="item-categories__body">
-								<div class="item-categories__body-block">
-									<a class="product-item__link burger-link" href="./category.html">
-										<p><span>6</span> товарів</p>
-										<div class="product-item__link-icon-body">
-											<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+						<div data-aos="zoom-in">
+							<div class="item-categories">
+								<div class="item-categories__content">
+									<div class="category-card">
+										<div class="category-card__image">
+											<picture><source srcset="img/products/03.webp" type="image/webp"><img src="img/products/03.png" alt="Image" /></picture>
 										</div>
-									</a>
-									<a href="./category.html">
-										<h3>Газові генератори для дому та малого бізнесу</h3>
-									</a>
+
+										<div class="category-card__items">
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="tags">
+										<div class="tag-item">
+											<p>VA10000-20000</p>
+										</div>
+										<div class="tag-item">
+											<p>рідкий пропан</p>
+										</div>
+										<div class="tag-item">
+											<p>природний газ</p>
+										</div>
+										<div class="tag-item">
+											<p>50Hz</p>
+										</div>
+									</div>
 								</div>
-								<div class="item-categories__body-text">
-									<p>
-										Ефективне рішення для багатоквартирних будинків та
-										підприємств, що потребують стабільного енергопостачання.
-									</p>
+								<div class="item-categories__body">
+									<div class="item-categories__body-block">
+										<a class="link-arrow" href="./category.html">
+											<p><span>6</span> товарів</p>
+											<div class="link-arrow-icon-body">
+												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+											</div>
+										</a>
+										<a href="./category.html">
+											<h3>Газові генератори для дому та малого бізнесу</h3>
+										</a>
+									</div>
+									<div class="item-categories__body-text">
+										<p>
+											Ефективне рішення для багатоквартирних будинків та
+											підприємств, що потребують стабільного енергопостачання.
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div data-aos="zoom-in" class="item-categories">
-							<div class="item-categories__content">
-								<div class="category-card">
-									<div class="category-card__image">
-										<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
-									</div>
-
-									<div class="category-card__items">
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-									</div>
-								</div>
-								<div class="tags">
-									<div class="tag-item">
-										<p>VA10000-20000</p>
-									</div>
-									<div class="tag-item">
-										<p>рідкий пропан</p>
-									</div>
-									<div class="tag-item">
-										<p>природний газ</p>
-									</div>
-									<div class="tag-item">
-										<p>50Hz</p>
-									</div>
-								</div>
-							</div>
-							<div class="item-categories__body">
-								<div class="item-categories__body-block">
-									<a class="product-item__link burger-link" href="./category.html">
-										<p><span>6</span> товарів</p>
-										<div class="product-item__link-icon-body">
-											<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+						<div data-aos="zoom-in">
+							<div class="item-categories">
+								<div class="item-categories__content">
+									<div class="category-card">
+										<div class="category-card__image">
+											<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
 										</div>
-									</a>
-									<a href="./category.html">
-										<h3>Газові генератори для дому та малого бізнесу</h3>
-									</a>
+
+										<div class="category-card__items">
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="tags">
+										<div class="tag-item">
+											<p>VA10000-20000</p>
+										</div>
+										<div class="tag-item">
+											<p>рідкий пропан</p>
+										</div>
+										<div class="tag-item">
+											<p>природний газ</p>
+										</div>
+										<div class="tag-item">
+											<p>50Hz</p>
+										</div>
+									</div>
 								</div>
-								<div class="item-categories__body-text">
-									<p>
-										Ефективне рішення для багатоквартирних будинків та
-										підприємств, що потребують стабільного енергопостачання.
-									</p>
+								<div class="item-categories__body">
+									<div class="item-categories__body-block">
+										<a class="link-arrow" href="./category.html">
+											<p><span>6</span> товарів</p>
+											<div class="link-arrow-icon-body">
+												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+											</div>
+										</a>
+										<a href="./category.html">
+											<h3>Газові генератори для дому та малого бізнесу</h3>
+										</a>
+									</div>
+									<div class="item-categories__body-text">
+										<p>
+											Ефективне рішення для багатоквартирних будинків та
+											підприємств, що потребують стабільного енергопостачання.
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div data-aos="zoom-in" class="item-categories">
-							<div class="item-categories__content">
-								<div class="category-card">
-									<div class="category-card__image">
-										<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
-									</div>
-
-									<div class="category-card__items">
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-										<a class="product-item__link burger-link" href="#">
-											GA5000
-											<div class="product-item__link-icon-body">
-												<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
-											</div>
-										</a>
-									</div>
-								</div>
-								<div class="tags">
-									<div class="tag-item">
-										<p>VA10000-20000</p>
-									</div>
-									<div class="tag-item">
-										<p>рідкий пропан</p>
-									</div>
-									<div class="tag-item">
-										<p>природний газ</p>
-									</div>
-									<div class="tag-item">
-										<p>50Hz</p>
-									</div>
-								</div>
-							</div>
-							<div class="item-categories__body">
-								<div class="item-categories__body-block">
-									<a class="product-item__link burger-link" href="./category.html">
-										<p><span>6</span> товарів</p>
-										<div class="product-item__link-icon-body">
-											<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+						<div data-aos="zoom-in">
+							<div class="item-categories">
+								<div class="item-categories__content">
+									<div class="category-card">
+										<div class="category-card__image">
+											<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
 										</div>
-									</a>
-									<a href="./category.html">
-										<h3>Газові генератори для дому та малого бізнесу</h3>
-									</a>
+
+										<div class="category-card__items">
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+											<a class="product-item__link burger-link" href="#">
+												GA5000
+												<div class="product-item__link-icon-body">
+													<img class="product-item__link-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="tags">
+										<div class="tag-item">
+											<p>VA10000-20000</p>
+										</div>
+										<div class="tag-item">
+											<p>рідкий пропан</p>
+										</div>
+										<div class="tag-item">
+											<p>природний газ</p>
+										</div>
+										<div class="tag-item">
+											<p>50Hz</p>
+										</div>
+									</div>
 								</div>
-								<div class="item-categories__body-text">
-									<p>
-										Ефективне рішення для багатоквартирних будинків та
-										підприємств, що потребують стабільного енергопостачання.
-									</p>
+								<div class="item-categories__body">
+									<div class="item-categories__body-block">
+										<a class="link-arrow" href="./category.html">
+											<p><span>6</span> товарів</p>
+											<div class="link-arrow-icon-body">
+												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
+											</div>
+										</a>
+										<a href="./category.html">
+											<h3>Газові генератори для дому та малого бізнесу</h3>
+										</a>
+									</div>
+									<div class="item-categories__body-text">
+										<p>
+											Ефективне рішення для багатоквартирних будинків та
+											підприємств, що потребують стабільного енергопостачання.
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -962,10 +979,11 @@
 									<label class="label !text-white">Корисні статті</label>
 									<h4>Дізнайтеся більше про переваги генераторів Pramac</h4>
 								</div>
-								<a class="product-item__link" href="./blog.html">
-									Читати
-									<div class="product-item__link-icon-body">
-										<img class="product-item__link-icon" src="img/icons/arrow-link.svg" alt="Icon" />
+								<a class="link-arrow" href="./category.html">
+									<p>Читати</p>
+
+									<div class="link-arrow-icon-body">
+										<img class="link-arrow-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 									</div>
 								</a>
 							</div>
@@ -1258,7 +1276,10 @@
 							</a>
 						</div>
 						<div class="control__video">
-							<video autoplay muted src="./files/videos/01.mp4"></video>
+							<video class="h-full w-full" autoplay muted loop>
+								<source class="w-full h-full" src="./files/videos/lamp/CTA_Lamp.mp4" type="video/mp4" />
+								<source class="w-full h-full" src="./files/videos/lamp/CTA_Lamp.webm" type="video/webm" />
+							</video>
 						</div>
 					</div>
 				</div>
@@ -1325,7 +1346,7 @@
 		</footer>
 
 	</div>
-	<script src="js/app.min.js?_v=20240930163234"></script>
+	<script src="js/app.min.js?_v=20240930202541"></script>
 </body>
 
 </html>

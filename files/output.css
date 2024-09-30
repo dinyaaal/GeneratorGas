@@ -665,10 +665,6 @@ input[type="number"]::-webkit-outer-spin-button,
   height: 100%;
 }
 
-.max-h-\[180px\] {
-  max-height: 180px;
-}
-
 .max-h-\[205px\] {
   max-height: 205px;
 }
@@ -741,6 +737,12 @@ input[type="number"]::-webkit-outer-spin-button,
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .resize {
@@ -1666,6 +1668,21 @@ main {
       opacity: 1 !important;
     }
   }
+  .control {
+    max-width: 358px;
+  }
+  .control {
+    flex-direction: column !important;
+  }
+  /* .control {
+    @apply rounded-lg bg-black text-white flex flex-col md:flex-row-reverse items-center overflow-hidden;
+  } */
+  .control__body {
+    max-width: 100% !important;
+  }
+  .control__body {
+    padding: 1.5rem !important;
+  }
 }
 
 /* footer */
@@ -1864,6 +1881,15 @@ main {
 
 .item-categories {
   display: grid;
+  background-color: transparent;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+}
+
+.item-categories:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 241 245 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 768px) {
@@ -1888,6 +1914,11 @@ main {
   justify-content: space-between;
   gap: 1.25rem;
   padding: 1.5rem;
+}
+
+.item-categories__body-text {
+  --tw-text-opacity: 1;
+  color: rgb(88 111 125 / var(--tw-text-opacity));
 }
 
 .tags {
@@ -1931,7 +1962,7 @@ main {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.product-item__link {
+.link-arrow {
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
@@ -1941,6 +1972,62 @@ main {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 0.5rem;
+}
+
+.link-arrow-block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.link-arrow-icon-body {
+  position: relative;
+  display: flex;
+  height: 1.5rem;
+  width: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.link-arrow-icon {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  height: 11px;
+  width: 14px;
+  flex-shrink: 0;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.link-arrow:hover .link-arrow-icon {
+  left: 100% !important;
+  --tw-translate-x: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.product-item__link {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 0.75rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.product-item__link:hover {
+  background-color: rgb(255 255 255 / 0.5);
+  padding-left: 0.75rem;
+  padding-right: 0px !important;
 }
 
 .product-item__link-block {
@@ -1953,7 +2040,7 @@ main {
   position: relative;
   display: flex;
   height: 1.5rem;
-  width: 2rem;
+  width: 1.5rem;
   flex-shrink: 0;
   align-items: center;
 }
@@ -1972,11 +2059,9 @@ main {
   transition-duration: 300ms;
 }
 
-.product-item__link:hover .product-item__link-icon {
-  left: 100% !important;
-  --tw-translate-x: -100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
+/* .product-item__link:hover .product-item__link-icon {
+  @apply !left-full -translate-x-full;
+} */
 
 .category-card__items .product-item__link {
   width: 100% !important;
