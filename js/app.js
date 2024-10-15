@@ -454,6 +454,7 @@
     }
     (() => {
         "use strict";
+        const modules_flsModules = {};
         function isWebp() {
             function testWebP(callback) {
                 let webP = new Image;
@@ -537,10 +538,10 @@
             if (target.hidden) return _slideDown(target, duration); else return _slideUp(target, duration);
         };
         let bodyLockStatus = true;
-        let bodyLockToggle = (delay = 500) => {
+        let bodyLockToggle = (delay = 0) => {
             if (document.documentElement.classList.contains("lock")) bodyUnlock(delay); else bodyLock(delay);
         };
-        let bodyUnlock = (delay = 500) => {
+        let bodyUnlock = (delay = 0) => {
             let body = document.querySelector("body");
             if (bodyLockStatus) {
                 let lock_padding = document.querySelectorAll("[data-lp]");
@@ -558,7 +559,7 @@
                 }), delay);
             }
         };
-        let bodyLock = (delay = 500) => {
+        let bodyLock = (delay = 0) => {
             let body = document.querySelector("body");
             if (bodyLockStatus) {
                 let lock_padding = document.querySelectorAll("[data-lp]");
@@ -704,6 +705,11 @@
             bodyUnlock();
             document.documentElement.classList.remove("menu-open");
         }
+        function functions_FLS(message) {
+            setTimeout((() => {
+                if (window.FLS) console.log(message);
+            }), 0);
+        }
         function uniqArray(array) {
             return array.filter((function(item, index, self) {
                 return self.indexOf(item) === index;
@@ -747,6 +753,253 @@
                 }
             }
         }
+        class Popup {
+            constructor(options) {
+                let config = {
+                    logging: true,
+                    init: true,
+                    attributeOpenButton: "data-popup",
+                    attributeCloseButton: "data-close",
+                    fixElementSelector: "[data-lp]",
+                    youtubeAttribute: "data-popup-youtube",
+                    youtubePlaceAttribute: "data-popup-youtube-place",
+                    setAutoplayYoutube: true,
+                    classes: {
+                        popup: "popup",
+                        popupContent: "popup__content",
+                        popupActive: "popup_show",
+                        bodyActive: "popup-show"
+                    },
+                    focusCatch: true,
+                    closeEsc: true,
+                    bodyLock: true,
+                    hashSettings: {
+                        location: true,
+                        goHash: true
+                    },
+                    on: {
+                        beforeOpen: function() {},
+                        afterOpen: function() {},
+                        beforeClose: function() {},
+                        afterClose: function() {}
+                    }
+                };
+                this.youTubeCode;
+                this.isOpen = false;
+                this.targetOpen = {
+                    selector: false,
+                    element: false
+                };
+                this.previousOpen = {
+                    selector: false,
+                    element: false
+                };
+                this.lastClosed = {
+                    selector: false,
+                    element: false
+                };
+                this._dataValue = false;
+                this.hash = false;
+                this._reopen = false;
+                this._selectorOpen = false;
+                this.lastFocusEl = false;
+                this._focusEl = [ "a[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "button:not([disabled]):not([aria-hidden])", "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "area[href]", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])' ];
+                this.options = {
+                    ...config,
+                    ...options,
+                    classes: {
+                        ...config.classes,
+                        ...options?.classes
+                    },
+                    hashSettings: {
+                        ...config.hashSettings,
+                        ...options?.hashSettings
+                    },
+                    on: {
+                        ...config.on,
+                        ...options?.on
+                    }
+                };
+                this.bodyLock = false;
+                this.options.init ? this.initPopups() : null;
+            }
+            initPopups() {
+                this.popupLogging(`Прокинувся`);
+                this.eventsPopup();
+            }
+            eventsPopup() {
+                document.addEventListener("click", function(e) {
+                    const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
+                    if (buttonOpen) {
+                        e.preventDefault();
+                        this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
+                        this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ? buttonOpen.getAttribute(this.options.youtubeAttribute) : null;
+                        if (this._dataValue !== "error") {
+                            if (!this.isOpen) this.lastFocusEl = buttonOpen;
+                            this.targetOpen.selector = `${this._dataValue}`;
+                            this._selectorOpen = true;
+                            this.open();
+                            return;
+                        } else this.popupLogging(`Йой, не заповнено атрибут у ${buttonOpen.classList}`);
+                        return;
+                    }
+                    const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
+                    if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
+                        e.preventDefault();
+                        this.close();
+                        return;
+                    }
+                }.bind(this));
+                document.addEventListener("keydown", function(e) {
+                    if (this.options.closeEsc && e.which == 27 && e.code === "Escape" && this.isOpen) {
+                        e.preventDefault();
+                        this.close();
+                        return;
+                    }
+                    if (this.options.focusCatch && e.which == 9 && this.isOpen) {
+                        this._focusCatch(e);
+                        return;
+                    }
+                }.bind(this));
+                if (this.options.hashSettings.goHash) {
+                    window.addEventListener("hashchange", function() {
+                        if (window.location.hash) this._openToHash(); else this.close(this.targetOpen.selector);
+                    }.bind(this));
+                    window.addEventListener("load", function() {
+                        if (window.location.hash) this._openToHash();
+                    }.bind(this));
+                }
+            }
+            open(selectorValue) {
+                if (bodyLockStatus) {
+                    this.bodyLock = document.documentElement.classList.contains("lock") && !this.isOpen ? true : false;
+                    if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") {
+                        this.targetOpen.selector = selectorValue;
+                        this._selectorOpen = true;
+                    }
+                    if (this.isOpen) {
+                        this._reopen = true;
+                        this.close();
+                    }
+                    if (!this._selectorOpen) this.targetOpen.selector = this.lastClosed.selector;
+                    if (!this._reopen) this.previousActiveElement = document.activeElement;
+                    this.targetOpen.element = document.querySelector(this.targetOpen.selector);
+                    if (this.targetOpen.element) {
+                        if (this.youTubeCode) {
+                            const codeVideo = this.youTubeCode;
+                            const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`;
+                            const iframe = document.createElement("iframe");
+                            iframe.setAttribute("allowfullscreen", "");
+                            const autoplay = this.options.setAutoplayYoutube ? "autoplay;" : "";
+                            iframe.setAttribute("allow", `${autoplay}; encrypted-media`);
+                            iframe.setAttribute("src", urlVideo);
+                            if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
+                                this.targetOpen.element.querySelector(".popup__text").setAttribute(`${this.options.youtubePlaceAttribute}`, "");
+                            }
+                            this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
+                        }
+                        if (this.options.hashSettings.location) {
+                            this._getHash();
+                            this._setHash();
+                        }
+                        this.options.on.beforeOpen(this);
+                        document.dispatchEvent(new CustomEvent("beforePopupOpen", {
+                            detail: {
+                                popup: this
+                            }
+                        }));
+                        this.targetOpen.element.classList.add(this.options.classes.popupActive);
+                        document.documentElement.classList.add(this.options.classes.bodyActive);
+                        if (!this._reopen) !this.bodyLock ? bodyLock() : null; else this._reopen = false;
+                        this.targetOpen.element.setAttribute("aria-hidden", "false");
+                        this.previousOpen.selector = this.targetOpen.selector;
+                        this.previousOpen.element = this.targetOpen.element;
+                        this._selectorOpen = false;
+                        this.isOpen = true;
+                        setTimeout((() => {
+                            this._focusTrap();
+                        }), 50);
+                        this.options.on.afterOpen(this);
+                        document.dispatchEvent(new CustomEvent("afterPopupOpen", {
+                            detail: {
+                                popup: this
+                            }
+                        }));
+                        this.popupLogging(`Відкрив попап`);
+                    } else this.popupLogging(`Йой, такого попапу немає. Перевірте коректність введення. `);
+                }
+            }
+            close(selectorValue) {
+                if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") this.previousOpen.selector = selectorValue;
+                if (!this.isOpen || !bodyLockStatus) return;
+                this.options.on.beforeClose(this);
+                document.dispatchEvent(new CustomEvent("beforePopupClose", {
+                    detail: {
+                        popup: this
+                    }
+                }));
+                const iframe = this.previousOpen.element.querySelector("iframe");
+                if (iframe) iframe.src = iframe.src;
+                this.previousOpen.element.classList.remove(this.options.classes.popupActive);
+                this.previousOpen.element.setAttribute("aria-hidden", "true");
+                if (!this._reopen) {
+                    document.documentElement.classList.remove(this.options.classes.bodyActive);
+                    !this.bodyLock ? bodyUnlock() : null;
+                    this.isOpen = false;
+                }
+                this._removeHash();
+                if (this._selectorOpen) {
+                    this.lastClosed.selector = this.previousOpen.selector;
+                    this.lastClosed.element = this.previousOpen.element;
+                }
+                this.options.on.afterClose(this);
+                document.dispatchEvent(new CustomEvent("afterPopupClose", {
+                    detail: {
+                        popup: this
+                    }
+                }));
+                setTimeout((() => {
+                    this._focusTrap();
+                }), 50);
+                this.popupLogging(`Закрив попап`);
+            }
+            _getHash() {
+                if (this.options.hashSettings.location) this.hash = this.targetOpen.selector.includes("#") ? this.targetOpen.selector : this.targetOpen.selector.replace(".", "#");
+            }
+            _openToHash() {
+                let classInHash = document.querySelector(`.${window.location.hash.replace("#", "")}`) ? `.${window.location.hash.replace("#", "")}` : document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` : null;
+                const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace(".", "#")}"]`);
+                this.youTubeCode = buttons.getAttribute(this.options.youtubeAttribute) ? buttons.getAttribute(this.options.youtubeAttribute) : null;
+                if (buttons && classInHash) this.open(classInHash);
+            }
+            _setHash() {
+                history.pushState("", "", this.hash);
+            }
+            _removeHash() {
+                history.pushState("", "", window.location.href.split("#")[0]);
+            }
+            _focusCatch(e) {
+                const focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
+                const focusArray = Array.prototype.slice.call(focusable);
+                const focusedIndex = focusArray.indexOf(document.activeElement);
+                if (e.shiftKey && focusedIndex === 0) {
+                    focusArray[focusArray.length - 1].focus();
+                    e.preventDefault();
+                }
+                if (!e.shiftKey && focusedIndex === focusArray.length - 1) {
+                    focusArray[0].focus();
+                    e.preventDefault();
+                }
+            }
+            _focusTrap() {
+                const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
+                if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else focusable[0].focus();
+            }
+            popupLogging(message) {
+                this.options.logging ? functions_FLS(`[Попапос]: ${message}`) : null;
+            }
+        }
+        modules_flsModules.popup = new Popup({});
         function isObject(obj) {
             return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
         }
@@ -4065,6 +4318,258 @@
                 destroy
             });
         }
+        function Autoplay(_ref) {
+            let {swiper, extendParams, on, emit, params} = _ref;
+            swiper.autoplay = {
+                running: false,
+                paused: false,
+                timeLeft: 0
+            };
+            extendParams({
+                autoplay: {
+                    enabled: false,
+                    delay: 3e3,
+                    waitForTransition: true,
+                    disableOnInteraction: false,
+                    stopOnLastSlide: false,
+                    reverseDirection: false,
+                    pauseOnMouseEnter: false
+                }
+            });
+            let timeout;
+            let raf;
+            let autoplayDelayTotal = params && params.autoplay ? params.autoplay.delay : 3e3;
+            let autoplayDelayCurrent = params && params.autoplay ? params.autoplay.delay : 3e3;
+            let autoplayTimeLeft;
+            let autoplayStartTime = (new Date).getTime();
+            let wasPaused;
+            let isTouched;
+            let pausedByTouch;
+            let touchStartTimeout;
+            let slideChanged;
+            let pausedByInteraction;
+            let pausedByPointerEnter;
+            function onTransitionEnd(e) {
+                if (!swiper || swiper.destroyed || !swiper.wrapperEl) return;
+                if (e.target !== swiper.wrapperEl) return;
+                swiper.wrapperEl.removeEventListener("transitionend", onTransitionEnd);
+                if (pausedByPointerEnter || e.detail && e.detail.bySwiperTouchMove) return;
+                resume();
+            }
+            const calcTimeLeft = () => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (swiper.autoplay.paused) wasPaused = true; else if (wasPaused) {
+                    autoplayDelayCurrent = autoplayTimeLeft;
+                    wasPaused = false;
+                }
+                const timeLeft = swiper.autoplay.paused ? autoplayTimeLeft : autoplayStartTime + autoplayDelayCurrent - (new Date).getTime();
+                swiper.autoplay.timeLeft = timeLeft;
+                emit("autoplayTimeLeft", timeLeft, timeLeft / autoplayDelayTotal);
+                raf = requestAnimationFrame((() => {
+                    calcTimeLeft();
+                }));
+            };
+            const getSlideDelay = () => {
+                let activeSlideEl;
+                if (swiper.virtual && swiper.params.virtual.enabled) activeSlideEl = swiper.slides.filter((slideEl => slideEl.classList.contains("swiper-slide-active")))[0]; else activeSlideEl = swiper.slides[swiper.activeIndex];
+                if (!activeSlideEl) return;
+                const currentSlideDelay = parseInt(activeSlideEl.getAttribute("data-swiper-autoplay"), 10);
+                return currentSlideDelay;
+            };
+            const run = delayForce => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                cancelAnimationFrame(raf);
+                calcTimeLeft();
+                let delay = typeof delayForce === "undefined" ? swiper.params.autoplay.delay : delayForce;
+                autoplayDelayTotal = swiper.params.autoplay.delay;
+                autoplayDelayCurrent = swiper.params.autoplay.delay;
+                const currentSlideDelay = getSlideDelay();
+                if (!Number.isNaN(currentSlideDelay) && currentSlideDelay > 0 && typeof delayForce === "undefined") {
+                    delay = currentSlideDelay;
+                    autoplayDelayTotal = currentSlideDelay;
+                    autoplayDelayCurrent = currentSlideDelay;
+                }
+                autoplayTimeLeft = delay;
+                const speed = swiper.params.speed;
+                const proceed = () => {
+                    if (!swiper || swiper.destroyed) return;
+                    if (swiper.params.autoplay.reverseDirection) {
+                        if (!swiper.isBeginning || swiper.params.loop || swiper.params.rewind) {
+                            swiper.slidePrev(speed, true, true);
+                            emit("autoplay");
+                        } else if (!swiper.params.autoplay.stopOnLastSlide) {
+                            swiper.slideTo(swiper.slides.length - 1, speed, true, true);
+                            emit("autoplay");
+                        }
+                    } else if (!swiper.isEnd || swiper.params.loop || swiper.params.rewind) {
+                        swiper.slideNext(speed, true, true);
+                        emit("autoplay");
+                    } else if (!swiper.params.autoplay.stopOnLastSlide) {
+                        swiper.slideTo(0, speed, true, true);
+                        emit("autoplay");
+                    }
+                    if (swiper.params.cssMode) {
+                        autoplayStartTime = (new Date).getTime();
+                        requestAnimationFrame((() => {
+                            run();
+                        }));
+                    }
+                };
+                if (delay > 0) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout((() => {
+                        proceed();
+                    }), delay);
+                } else requestAnimationFrame((() => {
+                    proceed();
+                }));
+                return delay;
+            };
+            const start = () => {
+                autoplayStartTime = (new Date).getTime();
+                swiper.autoplay.running = true;
+                run();
+                emit("autoplayStart");
+            };
+            const stop = () => {
+                swiper.autoplay.running = false;
+                clearTimeout(timeout);
+                cancelAnimationFrame(raf);
+                emit("autoplayStop");
+            };
+            const pause = (internal, reset) => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                clearTimeout(timeout);
+                if (!internal) pausedByInteraction = true;
+                const proceed = () => {
+                    emit("autoplayPause");
+                    if (swiper.params.autoplay.waitForTransition) swiper.wrapperEl.addEventListener("transitionend", onTransitionEnd); else resume();
+                };
+                swiper.autoplay.paused = true;
+                if (reset) {
+                    if (slideChanged) autoplayTimeLeft = swiper.params.autoplay.delay;
+                    slideChanged = false;
+                    proceed();
+                    return;
+                }
+                const delay = autoplayTimeLeft || swiper.params.autoplay.delay;
+                autoplayTimeLeft = delay - ((new Date).getTime() - autoplayStartTime);
+                if (swiper.isEnd && autoplayTimeLeft < 0 && !swiper.params.loop) return;
+                if (autoplayTimeLeft < 0) autoplayTimeLeft = 0;
+                proceed();
+            };
+            const resume = () => {
+                if (swiper.isEnd && autoplayTimeLeft < 0 && !swiper.params.loop || swiper.destroyed || !swiper.autoplay.running) return;
+                autoplayStartTime = (new Date).getTime();
+                if (pausedByInteraction) {
+                    pausedByInteraction = false;
+                    run(autoplayTimeLeft);
+                } else run();
+                swiper.autoplay.paused = false;
+                emit("autoplayResume");
+            };
+            const onVisibilityChange = () => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                const document = ssr_window_esm_getDocument();
+                if (document.visibilityState === "hidden") {
+                    pausedByInteraction = true;
+                    pause(true);
+                }
+                if (document.visibilityState === "visible") resume();
+            };
+            const onPointerEnter = e => {
+                if (e.pointerType !== "mouse") return;
+                pausedByInteraction = true;
+                pausedByPointerEnter = true;
+                if (swiper.animating || swiper.autoplay.paused) return;
+                pause(true);
+            };
+            const onPointerLeave = e => {
+                if (e.pointerType !== "mouse") return;
+                pausedByPointerEnter = false;
+                if (swiper.autoplay.paused) resume();
+            };
+            const attachMouseEvents = () => {
+                if (swiper.params.autoplay.pauseOnMouseEnter) {
+                    swiper.el.addEventListener("pointerenter", onPointerEnter);
+                    swiper.el.addEventListener("pointerleave", onPointerLeave);
+                }
+            };
+            const detachMouseEvents = () => {
+                if (swiper.el && typeof swiper.el !== "string") {
+                    swiper.el.removeEventListener("pointerenter", onPointerEnter);
+                    swiper.el.removeEventListener("pointerleave", onPointerLeave);
+                }
+            };
+            const attachDocumentEvents = () => {
+                const document = ssr_window_esm_getDocument();
+                document.addEventListener("visibilitychange", onVisibilityChange);
+            };
+            const detachDocumentEvents = () => {
+                const document = ssr_window_esm_getDocument();
+                document.removeEventListener("visibilitychange", onVisibilityChange);
+            };
+            on("init", (() => {
+                if (swiper.params.autoplay.enabled) {
+                    attachMouseEvents();
+                    attachDocumentEvents();
+                    start();
+                }
+            }));
+            on("destroy", (() => {
+                detachMouseEvents();
+                detachDocumentEvents();
+                if (swiper.autoplay.running) stop();
+            }));
+            on("_freeModeStaticRelease", (() => {
+                if (pausedByTouch || pausedByInteraction) resume();
+            }));
+            on("_freeModeNoMomentumRelease", (() => {
+                if (!swiper.params.autoplay.disableOnInteraction) pause(true, true); else stop();
+            }));
+            on("beforeTransitionStart", ((_s, speed, internal) => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (internal || !swiper.params.autoplay.disableOnInteraction) pause(true, true); else stop();
+            }));
+            on("sliderFirstMove", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (swiper.params.autoplay.disableOnInteraction) {
+                    stop();
+                    return;
+                }
+                isTouched = true;
+                pausedByTouch = false;
+                pausedByInteraction = false;
+                touchStartTimeout = setTimeout((() => {
+                    pausedByInteraction = true;
+                    pausedByTouch = true;
+                    pause(true);
+                }), 200);
+            }));
+            on("touchEnd", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running || !isTouched) return;
+                clearTimeout(touchStartTimeout);
+                clearTimeout(timeout);
+                if (swiper.params.autoplay.disableOnInteraction) {
+                    pausedByTouch = false;
+                    isTouched = false;
+                    return;
+                }
+                if (pausedByTouch && swiper.params.cssMode) resume();
+                pausedByTouch = false;
+                isTouched = false;
+            }));
+            on("slideChange", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                slideChanged = true;
+            }));
+            Object.assign(swiper.autoplay, {
+                start,
+                stop,
+                pause,
+                resume
+            });
+        }
         function Thumb(_ref) {
             let {swiper, extendParams, on} = _ref;
             extendParams({
@@ -4345,7 +4850,7 @@
         }
         function initSliders() {
             if (document.querySelector(".hero__slider")) new swiper_core_Swiper(".hero__slider", {
-                modules: [ Pagination, EffectCoverflow ],
+                modules: [ Pagination, EffectCoverflow, Autoplay ],
                 effect: "coverflow",
                 observer: true,
                 observeParents: true,
@@ -4359,8 +4864,12 @@
                     stretch: 0,
                     depth: 0
                 },
+                autoplay: true,
+                autoplay: {
+                    delay: 5e3
+                },
                 pagination: {
-                    el: ".swiper-pagination",
+                    el: ".swiper-pagination-progress",
                     type: "progressbar"
                 },
                 breakpoints: {
@@ -4376,7 +4885,28 @@
                         }
                     }
                 },
-                on: {}
+                on: {
+                    slideChange: function() {
+                        const realIndex = this.realIndex;
+                        const indicators = document.querySelectorAll(".indicator");
+                        const totalSlides = indicators.length;
+                        const percentagePerSlide = 100 / totalSlides;
+                        indicators.forEach((indicator => {
+                            indicator.classList.remove("active");
+                            const span = indicator.querySelector("span");
+                            if (span) span.style.left = "";
+                        }));
+                        indicators.forEach(((indicator, index) => {
+                            const leftPercentage = (index + 1) * percentagePerSlide;
+                            const span = indicator.querySelector("span");
+                            if (span) span.dataset.leftValue = `${leftPercentage}%`;
+                            if (index <= realIndex) {
+                                indicator.classList.add("active");
+                                if (span) span.style.left = span.dataset.leftValue;
+                            }
+                        }));
+                    }
+                }
             });
             if (document.querySelector(".product-thumbs__slider")) var swiperThumbs = new swiper_core_Swiper(".product-thumbs__slider", {
                 observer: true,
@@ -9889,39 +10419,33 @@
                 scrub: 1
             }
         });
-        const supportImage1 = document.querySelector(".support-block-01 .support-block__image");
-        const supportImage2 = document.querySelector(".support-block-02 .support-block__image");
-        document.querySelector(".support-block-wrapper");
-        const supportBlock1 = document.querySelector(".support-block-01");
-        const supportBlock2 = document.querySelector(".support-block-02");
-        document.querySelector(".support-block-01 .support-scroll");
-        document.querySelector(".support-block-02 .support-scroll");
         let mm = gsapWithCSS.matchMedia();
-        mm.add("(min-width: 1280px)", (() => {
-            gsapWithCSS.to(supportImage1, {
-                top: "calc(100% + 24px)",
-                scrollTrigger: {
-                    trigger: supportBlock1,
-                    start: "top top",
-                    endTrigger: supportBlock2,
-                    end: "top center",
-                    scrub: 1
-                }
-            });
-            gsapWithCSS.set(supportImage2, {
-                top: "calc(-100% + 24px)",
-                y: "-100%"
-            });
-            gsapWithCSS.to(supportImage2, {
-                top: "100%",
-                scrollTrigger: {
-                    trigger: supportBlock1,
-                    endTrigger: supportBlock2,
-                    start: "bottom bottom",
-                    end: "bottom center",
-                    scrub: 1
-                }
-            });
+        mm.add("(min-width: 768px)", (() => {
+            document.querySelectorAll(".support-block").forEach(((block, index, blocks) => {
+                const imageBody = block.querySelector(".support-block__image");
+                const img = block.querySelector("img");
+                const imageBodyHeight = imageBody.offsetHeight;
+                const imageHeight = img.offsetHeight;
+                const differenceHeight = imageBodyHeight - imageHeight - 24;
+                block.offsetHeight;
+                let height = imageBodyHeight * index;
+                gsapWithCSS.set(imageBody, {
+                    y: `-${height}%`,
+                    z: 0
+                });
+                const isLastBlock = index === blocks.length - 1;
+                gsapWithCSS.to(img, {
+                    scrollTrigger: {
+                        trigger: imageBody,
+                        pin: true,
+                        start: "top 20px",
+                        end: isLastBlock ? `+${height + differenceHeight / imageBodyHeight * 100}% top` : `+${height + 150}% top`,
+                        pinType: "transform",
+                        pinSpacing: false,
+                        scrub: 1
+                    }
+                });
+            }));
         }));
         const buttons = document.querySelectorAll(".button-contacts-main");
         const contacts = document.querySelector(".contacts");

@@ -5,11 +5,17 @@
 	<title>HomePage</title>
 	<meta charset="UTF-8" />
 	<meta name="format-detection" content="telephone=no" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&_v=20240930202541" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap&_v=20240930202541" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&_v=20241015150720" rel="stylesheet" />
+	<!-- <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap&_v=20241015150720"
+    rel="stylesheet"
+  /> -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap&_v=20241015150720" rel="stylesheet" />
 
-	<link rel="stylesheet" href="css/style.min.css?_v=20240930202541" />
-	<link rel="stylesheet" href="files/output.css?_v=20240930202541" />
+	<link rel="stylesheet" href="files/output.css?_v=20241015150720" />
+	<link rel="stylesheet" href="css/style.min.css?_v=20241015150720" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,7 +33,7 @@
 							<span class="logo-text-span">Gas</span>
 						</div>
 					</a>
-					<nav class="hidden xl:flex">
+					<nav class="hidden 920:flex">
 						<ul class="menu__list flex items-center gap-8">
 							<li class="menu__item group">
 								<a class="menu__link" href="./category.html">
@@ -36,17 +42,17 @@
 										<span>Генератори</span>
 									</div>
 								</a>
-								<div class="sub-menu pointer-events-none group-hover:!pointer-events-auto w-full h-fit top-[calc(100%-20px)] left-0 absolute pt-5">
+								<div class="sub-menu pointer-events-none group-hover:!pointer-events-auto w-full h-fit top-[calc(100%-30px)] left-0 absolute pt-[30px]">
 									<div class="sub-menu__wrapper rounded-[6px] w-full overflow-hidden">
 										<div class="sub-menu__body w-full flex justify-between gap-10 p-6 rounded-[6px] -translate-y-[calc(100%+20px)] group-hover:!translate-y-0 transition-all duration-500 bg-dark">
 											<div class="grid justify-between w-full grid-cols-3 gap-10">
 												<div class="category-card">
-													<div class="category-card__image">
+													<a href="./category.html" class="category-card__image">
 														<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
-													</div>
-													<div class="category-card__name">
+													</a>
+													<a href="./category.html" class="category-card__name">
 														Газові генератори для дому та малого бізнесу
-													</div>
+													</a>
 													<div class="category-card__items">
 														<a class="product-item__link" href="#">
 															GA5000
@@ -72,8 +78,8 @@
 																<img class="product-item__link-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 															</div>
 														</a>
-														<a class="product-item__link" href="#">
-															GA5000
+														<a class="product-item__link" href="./category.html">
+															Показати всі
 															<div class="product-item__link-icon-body">
 																<img class="product-item__link-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 															</div>
@@ -81,13 +87,12 @@
 													</div>
 												</div>
 												<div class="category-card">
-													<div class="category-card__image">
-														<picture><source srcset="img/products/02.webp" type="image/webp"><img src="img/products/02.png" alt="Image" /></picture>
-													</div>
-													<div class="category-card__name">
-														Газові генератори для багатоквартирних будинків і
-														промисловості
-													</div>
+													<a href="./category.html" class="category-card__image">
+														<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
+													</a>
+													<a href="./category.html" class="category-card__name">
+														Газові генератори для дому та малого бізнесу
+													</a>
 													<div class="category-card__items">
 														<a class="product-item__link" href="#">
 															GA5000
@@ -113,8 +118,8 @@
 																<img class="product-item__link-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 															</div>
 														</a>
-														<a class="product-item__link" href="#">
-															GA5000
+														<a class="product-item__link" href="./category.html">
+															Показати всі
 															<div class="product-item__link-icon-body">
 																<img class="product-item__link-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 															</div>
@@ -122,12 +127,12 @@
 													</div>
 												</div>
 												<div class="category-card">
-													<div class="category-card__image">
-														<picture><source srcset="img/products/03.webp" type="image/webp"><img src="img/products/03.png" alt="Image" /></picture>
-													</div>
-													<div class="category-card__name">
-														Додаткове обладнання
-													</div>
+													<a href="./category.html" class="category-card__image">
+														<picture><source srcset="img/products/01.webp" type="image/webp"><img src="img/products/01.png" alt="Image" /></picture>
+													</a>
+													<a href="./category.html" class="category-card__name">
+														Газові генератори для дому та малого бізнесу
+													</a>
 													<div class="category-card__items">
 														<a class="product-item__link" href="#">
 															GA5000
@@ -153,8 +158,8 @@
 																<img class="product-item__link-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 															</div>
 														</a>
-														<a class="product-item__link" href="#">
-															GA5000
+														<a class="product-item__link" href="./category.html">
+															Показати всі
 															<div class="product-item__link-icon-body">
 																<img class="product-item__link-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 															</div>
@@ -312,7 +317,7 @@
 						</nav>
 					</div>
 
-					<div class="actions hidden xl:flex gap-6 items-center">
+					<div class="actions hidden 920:flex gap-6 items-center">
 						<a class="number" href="tel:+380992329999">+38 099 232 9999</a>
 						<button class="button button-contacts relative button-contacts-main min-w-[105px] h-10">
 							<div class="button-block">
@@ -322,76 +327,78 @@
 						</button>
 					</div>
 
-					<div class="contacts">
-						<div class="main-container overflow-auto h-full pointer-events-none flex justify-end">
-							<div class="contacts-body">
-								<div class="contacts-body__top pt-2 px-2">
-									<div class="contacts-body__close">
-										<p>зачинити</p>
-										<button class="button-close contacts-close">
-											<svg class="transition-all" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M6.39989 18.308L5.69189 17.6L11.2919 12L5.69189 6.40002L6.39989 5.69202L11.9999 11.292L17.5999 5.69202L18.3079 6.40002L12.7079 12L18.3079 17.6L17.5999 18.308L11.9999 12.708L6.39989 18.308Z" />
-											</svg>
-										</button>
-									</div>
-								</div>
-								<div class="contacts-body__content">
-									<h2>КОНТАКТИ</h2>
-									<p>
-										Ми тут, щоб допомогти вам зрозуміти, як наші газові генератори
-										можуть стати надійною частиною вашого енергозабезпечення. Якщо у
-										вас є запитання або ви хочете дізнатися більше про наші продукти
-										та послуги, зв’яжіться з нами напряму!
-									</p>
-									<div class="contacts__items">
-										<div class="item-contact">
-											<div class="item-contact__text">
-												<p>Телефон</p>
-											</div>
-											<div class="item-contact__block">
-												<a class="item-contact__link link" href="tel:+380992329999">+38 099 232 9999</a>
-											</div>
+					<div class="contacts max-w-[100%]">
+						<div class="overflow-y-auto w-full h-full">
+							<div class="main-container overflow-x-hidden h-full pointer-events-none flex justify-end">
+								<div class="contacts-body">
+									<div class="contacts-body__top pt-2 px-2">
+										<div class="contacts-body__close">
+											<p>зачинити</p>
+											<button class="button-close contacts-close">
+												<svg class="transition-all" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M6.39989 18.308L5.69189 17.6L11.2919 12L5.69189 6.40002L6.39989 5.69202L11.9999 11.292L17.5999 5.69202L18.3079 6.40002L12.7079 12L18.3079 17.6L17.5999 18.308L11.9999 12.708L6.39989 18.308Z" />
+												</svg>
+											</button>
 										</div>
-										<div class="item-contact">
-											<div class="item-contact__text">
-												<p>Месенджери</p>
+									</div>
+									<div class="contacts-body__content">
+										<h2>КОНТАКТИ</h2>
+										<p>
+											Ми тут, щоб допомогти вам зрозуміти, як наші газові генератори
+											можуть стати надійною частиною вашого енергозабезпечення. Якщо
+											у вас є запитання або ви хочете дізнатися більше про наші
+											продукти та послуги, зв’яжіться з нами напряму!
+										</p>
+										<div class="contacts__items">
+											<div class="item-contact">
+												<div class="item-contact__text">
+													<p>Телефон</p>
+												</div>
+												<div class="item-contact__block">
+													<a class="item-contact__link link" href="tel:+380992329999">+38 099 232 9999</a>
+												</div>
 											</div>
-											<div class="item-contact__block">
-												<div class="social-items">
-													<a href="#" class="item-social">
-														<img src="img/icons/socials/telegram.svg" alt="Icon" />
-													</a>
-													<a href="#" class="item-social">
-														<img src="img/icons/socials/whatsapp.svg" alt="Icon" />
-													</a>
-													<a href="#" class="item-social">
-														<img src="img/icons/socials/viber.svg" alt="Icon" />
-													</a>
+											<div class="item-contact">
+												<div class="item-contact__text">
+													<p>Месенджери</p>
+												</div>
+												<div class="item-contact__block">
+													<div class="social-items">
+														<a href="#" class="item-social">
+															<img src="img/icons/socials/telegram.svg" alt="Icon" />
+														</a>
+														<a href="#" class="item-social">
+															<img src="img/icons/socials/whatsapp.svg" alt="Icon" />
+														</a>
+														<a href="#" class="item-social">
+															<img src="img/icons/socials/viber.svg" alt="Icon" />
+														</a>
+													</div>
+												</div>
+											</div>
+											<div class="item-contact">
+												<div class="item-contact__text">
+													<p>Email</p>
+												</div>
+												<div class="item-contact__block">
+													<a class="item-contact__link link" href="mailto:office@generatorgas.com.ua">office@generatorgas.com.ua</a>
+												</div>
+											</div>
+											<div class="item-contact">
+												<div class="item-contact__text">
+													<p>Адреса</p>
+												</div>
+												<div class="item-contact__block">
+													<a class="item-contact__link link" href="#">4176, м.Київ,вул. Електриків,26</a>
 												</div>
 											</div>
 										</div>
-										<div class="item-contact">
-											<div class="item-contact__text">
-												<p>Email</p>
-											</div>
-											<div class="item-contact__block">
-												<a class="item-contact__link link" href="mailto:office@generatorgas.com.ua">office@generatorgas.com.ua</a>
-											</div>
+										<div class="flex items-center gap-6 flex-wrap text-sm">
+											<a href="#" class="link">YouTube</a>
+											<a href="#" class="link">Facebook</a>
+											<a href="#" class="link">Instagram</a>
+											<a href="#" class="link">TikTok</a>
 										</div>
-										<div class="item-contact">
-											<div class="item-contact__text">
-												<p>Адреса</p>
-											</div>
-											<div class="item-contact__block">
-												<a class="item-contact__link link" href="#">4176, м.Київ,вул. Електриків,26</a>
-											</div>
-										</div>
-									</div>
-									<div class="flex items-center gap-6 flex-wrap text-sm">
-										<a href="#" class="link">YouTube</a>
-										<a href="#" class="link">Facebook</a>
-										<a href="#" class="link">Instagram</a>
-										<a href="#" class="link">TikTok</a>
 									</div>
 								</div>
 							</div>
@@ -412,12 +419,12 @@
 							Продаж, встановлення, обслуговування від ексклюзивного
 							дистриб'ютора.
 						</p>
-						<a class="button-main" href="./category.html">
+						<button class="button-main button-contacts-main" href="./category.html">
 							ВСІ МОДЕЛІ
 							<div class="button-main-icon-body">
 								<img class="button-main-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 							</div>
-						</a>
+						</button>
 					</div>
 					<div class="grid w-fit xl:min-w-[815px]">
 						<div class="hero__slider grid w-full pt-[100px] swiper">
@@ -427,7 +434,9 @@
 										<div class="hero__slide-name">
 											<p>GA20000</p>
 										</div>
-										<picture><source srcset="img/products/01.webp" type="image/webp"><img class="hero__slide-image" src="img/products/01.png" alt="Icon" /></picture>
+										<a href="#">
+											<picture><source srcset="img/products/01.webp" type="image/webp"><img class="hero__slide-image" src="img/products/01.png" alt="Icon" /></picture>
+										</a>
 									</div>
 								</div>
 								<div class="hero__slide swiper-slide">
@@ -435,7 +444,9 @@
 										<div class="hero__slide-name">
 											<p>GA20000</p>
 										</div>
-										<picture><source srcset="img/products/02.webp" type="image/webp"><img class="hero__slide-image" src="img/products/02.png" alt="Icon" /></picture>
+										<a href="#">
+											<picture><source srcset="img/products/02.webp" type="image/webp"><img class="hero__slide-image" src="img/products/02.png" alt="Icon" /></picture>
+										</a>
 									</div>
 								</div>
 								<div class="hero__slide swiper-slide">
@@ -443,7 +454,9 @@
 										<div class="hero__slide-name">
 											<p>GA20000</p>
 										</div>
-										<picture><source srcset="img/products/03.webp" type="image/webp"><img class="hero__slide-image" src="img/products/03.png" alt="Icon" /></picture>
+										<a href="#">
+											<picture><source srcset="img/products/03.webp" type="image/webp"><img class="hero__slide-image" src="img/products/03.png" alt="Icon" /></picture>
+										</a>
 									</div>
 								</div>
 								<div class="hero__slide swiper-slide">
@@ -451,27 +464,38 @@
 										<div class="hero__slide-name">
 											<p>GA20000</p>
 										</div>
-										<picture><source srcset="img/products/01.webp" type="image/webp"><img class="hero__slide-image" src="img/products/01.png" alt="Icon" /></picture>
-									</div>
-								</div>
-								<div class="hero__slide swiper-slide">
-									<div class="hero__slide-body">
-										<div class="hero__slide-name">
-											<p>GA20000</p>
-										</div>
-										<picture><source srcset="img/products/01.webp" type="image/webp"><img class="hero__slide-image" src="img/products/01.png" alt="Icon" /></picture>
-									</div>
-								</div>
-								<div class="hero__slide swiper-slide">
-									<div class="hero__slide-body">
-										<div class="hero__slide-name">
-											<p>GA20000</p>
-										</div>
-										<picture><source srcset="img/products/01.webp" type="image/webp"><img class="hero__slide-image" src="img/products/01.png" alt="Icon" /></picture>
+										<a href="#">
+											<picture><source srcset="img/products/01.webp" type="image/webp"><img class="hero__slide-image" src="img/products/01.png" alt="Icon" /></picture>
+										</a>
 									</div>
 								</div>
 							</div>
-							<div class="swiper-pagination"></div>
+							<div class="md:max-w-[50%] w-full mx-auto">
+								<div class="indicators">
+									<a href="#" class="indicator">
+										<div class="indicator-body">
+											<span>M01</span>
+										</div>
+									</a>
+									<a href="#" class="indicator">
+										<div class="indicator-body">
+											<span>M02</span>
+										</div>
+									</a>
+									<a href="#" class="indicator">
+										<div class="indicator-body">
+											<span>M03</span>
+										</div>
+									</a>
+									<a href="#" class="indicator">
+										<div class="indicator-body">
+											<span>M04</span>
+										</div>
+									</a>
+								</div>
+
+								<div class="swiper-pagination-progress"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -505,7 +529,7 @@
 						<h1>Категорії товарів</h1>
 					</div>
 					<div class="categories">
-						<div data-aos="zoom-in xl:col-span-2">
+						<div data-aos="zoom-in" class="xl:col-span-2">
 							<div class="item-categories">
 								<div class="item-categories__content">
 									<div class="category-card">
@@ -561,17 +585,17 @@
 										</div>
 									</div>
 								</div>
-								<div class="item-categories__body">
+								<a href="./category.html" class="item-categories__body">
 									<div class="item-categories__body-block">
-										<a class="link-arrow" href="./category.html">
+										<div class="link-arrow">
 											<p><span>6</span> товарів</p>
 											<div class="link-arrow-icon-body">
 												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
 											</div>
-										</a>
-										<a href="./category.html">
+										</div>
+										<div>
 											<h3>Газові генератори для дому та малого бізнесу</h3>
-										</a>
+										</div>
 									</div>
 									<div class="item-categories__body-text">
 										<p>
@@ -579,7 +603,7 @@
 											підприємств, що потребують стабільного енергопостачання.
 										</p>
 									</div>
-								</div>
+								</a>
 							</div>
 						</div>
 						<div data-aos="zoom-in">
@@ -638,17 +662,17 @@
 										</div>
 									</div>
 								</div>
-								<div class="item-categories__body">
+								<a href="./category.html" class="item-categories__body">
 									<div class="item-categories__body-block">
-										<a class="link-arrow" href="./category.html">
+										<div class="link-arrow">
 											<p><span>6</span> товарів</p>
 											<div class="link-arrow-icon-body">
 												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
 											</div>
-										</a>
-										<a href="./category.html">
+										</div>
+										<div>
 											<h3>Газові генератори для дому та малого бізнесу</h3>
-										</a>
+										</div>
 									</div>
 									<div class="item-categories__body-text">
 										<p>
@@ -656,7 +680,7 @@
 											підприємств, що потребують стабільного енергопостачання.
 										</p>
 									</div>
-								</div>
+								</a>
 							</div>
 						</div>
 						<div data-aos="zoom-in">
@@ -715,17 +739,17 @@
 										</div>
 									</div>
 								</div>
-								<div class="item-categories__body">
+								<a href="./category.html" class="item-categories__body">
 									<div class="item-categories__body-block">
-										<a class="link-arrow" href="./category.html">
+										<div class="link-arrow">
 											<p><span>6</span> товарів</p>
 											<div class="link-arrow-icon-body">
 												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
 											</div>
-										</a>
-										<a href="./category.html">
+										</div>
+										<div>
 											<h3>Газові генератори для дому та малого бізнесу</h3>
-										</a>
+										</div>
 									</div>
 									<div class="item-categories__body-text">
 										<p>
@@ -733,7 +757,7 @@
 											підприємств, що потребують стабільного енергопостачання.
 										</p>
 									</div>
-								</div>
+								</a>
 							</div>
 						</div>
 						<div data-aos="zoom-in">
@@ -792,17 +816,17 @@
 										</div>
 									</div>
 								</div>
-								<div class="item-categories__body">
+								<a href="./category.html" class="item-categories__body">
 									<div class="item-categories__body-block">
-										<a class="link-arrow" href="./category.html">
+										<div class="link-arrow">
 											<p><span>6</span> товарів</p>
 											<div class="link-arrow-icon-body">
 												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
 											</div>
-										</a>
-										<a href="./category.html">
+										</div>
+										<div>
 											<h3>Газові генератори для дому та малого бізнесу</h3>
-										</a>
+										</div>
 									</div>
 									<div class="item-categories__body-text">
 										<p>
@@ -810,7 +834,7 @@
 											підприємств, що потребують стабільного енергопостачання.
 										</p>
 									</div>
-								</div>
+								</a>
 							</div>
 						</div>
 						<div data-aos="zoom-in">
@@ -869,17 +893,17 @@
 										</div>
 									</div>
 								</div>
-								<div class="item-categories__body">
+								<a href="./category.html" class="item-categories__body">
 									<div class="item-categories__body-block">
-										<a class="link-arrow" href="./category.html">
+										<div class="link-arrow">
 											<p><span>6</span> товарів</p>
 											<div class="link-arrow-icon-body">
 												<img class="link-arrow-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
 											</div>
-										</a>
-										<a href="./category.html">
+										</div>
+										<div>
 											<h3>Газові генератори для дому та малого бізнесу</h3>
-										</a>
+										</div>
 									</div>
 									<div class="item-categories__body-text">
 										<p>
@@ -887,7 +911,7 @@
 											підприємств, що потребують стабільного енергопостачання.
 										</p>
 									</div>
-								</div>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -970,24 +994,24 @@
 								</div>
 							</div>
 						</div>
-						<div data-aos="fade-left" class="flex flex-col md:flex-row w-full gap-2 items-stretch">
-							<div class="rounded-lg max-h-[205px] md:max-h-full w-full h-full md:max-w-[30%] overflow-hidden">
+						<a href="./blog.html" data-aos="fade-left" class="learn-more">
+							<div class="learn-more__image">
 								<picture><source srcset="img/articles/decor.webp" type="image/webp"><img class="w-full h-full object-cover" src="img/articles/decor.jpg" alt="Image" /></picture>
 							</div>
-							<div class="flex w-full text-white p-6 rounded-lg bg-dark flex-col gap-6">
+							<div class="learn-more__body">
 								<div class="flex flex-col gap-4">
 									<label class="label !text-white">Корисні статті</label>
 									<h4>Дізнайтеся більше про переваги генераторів Pramac</h4>
 								</div>
-								<a class="link-arrow" href="./category.html">
+								<div class="link-arrow" href="./category.html">
 									<p>Читати</p>
 
 									<div class="link-arrow-icon-body">
 										<img class="link-arrow-icon" src="img/icons/arrow-link.svg" alt="Icon" />
 									</div>
-								</a>
+								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 			</section>
@@ -998,9 +1022,15 @@
 						<h1>Ефективність та надійність у дії</h1>
 					</div>
 					<div class="item-video-review">
-						<div class="item-video-review__content">
-							<iframe width="944" height="531" src="https://www.youtube.com/embed/7sg9WxMtX9w" title="Звуки Поезда для Сна 8 Часов /Сон в Поезде/Train Sounds Ambient White Noise Soundscape" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-						</div>
+						<a href="#" data-popup="#popup-video" class="item-video-review__content w-full h-full relative">
+							<picture><source srcset="img/video/generator.webp" type="image/webp"><img class="item-video-review__content-image w-full h-full object-cover" src="img/video/generator.jpg" alt="Image" /></picture>
+							<button class="button-video">
+								<svg class="button-video__icon" width="30" height="38" viewBox="0 0 30 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.666504 37.4799L29.481 18.9987L0.666504 0.517578V37.4799Z" fill="white" />
+								</svg>
+							</button>
+						</a>
+
 						<div class="item-video-review__body">
 							<a href="#" class="video-link">
 								<img src="img/icons/youtube.svg" alt="Icon" />
@@ -1268,12 +1298,12 @@
 									коли настане темрява.
 								</p>
 							</div>
-							<a class="button-main button-main--white" href="#">
+							<button class="button-main button-main--white button-contacts-main">
 								Контролюй світло
 								<div class="button-main-icon-body">
 									<img class="button-main-icon" src="img/icons/arrow-link-black.svg" alt="Icon" />
 								</div>
-							</a>
+							</button>
 						</div>
 						<div class="control__video">
 							<video class="h-full w-full" autoplay muted loop>
@@ -1346,7 +1376,21 @@
 		</footer>
 
 	</div>
-	<script src="js/app.min.js?_v=20240930202541"></script>
+	<div id="popup-video" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content max-w-[1000px]">
+				<button data-close type="button" class="button-close popup__close self-end">
+					<svg class="transition-all" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M6.39989 18.308L5.69189 17.6L11.2919 12L5.69189 6.40002L6.39989 5.69202L11.9999 11.292L17.5999 5.69202L18.3079 6.40002L12.7079 12L18.3079 17.6L17.5999 18.308L11.9999 12.708L6.39989 18.308Z"></path>
+					</svg>
+				</button>
+				<div class="video-body rounded-3xl overflow-hidden aspect-video w-full">
+					<iframe class="w-full h-full" width="1519" height="578" src="https://www.youtube.com/embed/ajxcstqrmIA" title="Powerknight - Резервные генераторы Pramac (INTRO)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/app.min.js?_v=20241015150720"></script>
 </body>
 
 </html>
